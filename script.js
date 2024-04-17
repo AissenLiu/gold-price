@@ -60,10 +60,12 @@ function openTab(evt, tabName) {
     if (tabName != "Home") {
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
+            document.getElementById("conversionTool").style.display = "none";
         }
     } else {
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "block";
+            document.getElementById("conversionTool").style.display = "block";
         }
     }
     tablinks = document.getElementsByClassName("tablinks");
@@ -134,4 +136,64 @@ window.onload = function() {
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
+
+    // 确保换算工具能够使用当前的金价
+    if (domesticGoldData && domesticGoldData['gn']) {
+        const daygoldItem = domesticGoldData['gn'].find(item => item['dir'] === 'daygold');
+        if (daygoldItem) {
+            // 假设这里已经获取到了国内金价数据，并且能够找到daygold项目
+            const currentGoldPrice = parseFloat(daygoldItem['price']);
+            // 可以在此处调用convert函数，以初始化换算工具的显示
+            convert(); // 根据需要决定是否需要自动执行换算
+        }
+    }
+
+    // 为金额和重量输入框添加事件监听器
+    const amountInput = document.getElementById('amount');
+    const weightInput = document.getElementById('weight');
+
+    amountInput.addEventListener('input', function() {
+        // 当输入金额时，清空重量输入框
+        weightInput.value = '';
+    });
+
+    weightInput.addEventListener('input', function() {
+        // 当输入重量时，清空金额输入框
+        amountInput.value = '';
+    });
 };
+
+function convert() {
+    const amountInput = document.getElementById('amount');
+    const weightInput = document.getElementById('weight');
+    const resultParagraph = document.getElementById('conversionResult');
+
+    let amount = amountInput.value ? parseFloat(amountInput.value) : null;
+    let weight = weightInput.value ? parseFloat(weightInput.value) : null;
+    let currentGoldPrice = domesticGoldData['gn'].find(item => item['dir'] === 'daygold')['price'];
+
+    if (amount && weight) {
+        // 如果两者都输入了，则不进行换算
+        resultParagraph.textContent = '请输入金额或重量，但不能同时输入两者。';
+        return;
+    }
+
+    if (!currentGoldPrice) {
+        // 如果当前金价未获取到，则无法进行换算
+        resultParagraph.textContent = '当前黄金价格未获取到，请稍后再试。';
+        return;
+    }
+
+    if (amount) {
+        // 如果输入了金额，则计算重量
+        const weight = amount / currentGoldPrice;
+        resultParagraph.textContent = `${amount}元 可以买 ${weight.toFixed(2)}克`;
+    } else if (weight) {
+        // 如果输入了重量，则计算金额
+        const amount = weight * currentGoldPrice;
+        resultParagraph.textContent = `${weight}克 需要花费 ${amount.toFixed(2)}元`;
+    } else {
+        // 如果两者都没有输入，则提示用户输入
+        resultParagraph.textContent = '请输入金额或重量进行换算。';
+    }
+}

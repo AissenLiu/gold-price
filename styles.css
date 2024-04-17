@@ -127,3 +127,75 @@ h2 {
 .decrease {
     color: green;
 }
+
+/* 换算工具容器样式 */
+#conversionTool {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center; /* 使内部元素水平居中 */
+    margin-top: 20px;
+}
+
+/* 表单样式 */
+#conversionForm {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 15px;
+}
+
+/* 标签和输入框样式 */
+#conversionForm label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#conversionForm input {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 按钮样式 */
+#conversionForm button {
+    padding: 10px 15px;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* 为按钮添加一些间隔 */
+}
+
+#conversionForm button:hover {
+    background-color: #0056b3;
+}
+
+/* 换算结果样式 */
+#conversionResult {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+    #conversionForm input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #conversionForm button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #conversionTool {
+        padding: 15px;
+    }
+}

@@ -19,6 +19,17 @@
     </div>
 </div>
 
+<div id="conversionTool">
+    <form id="conversionForm">
+        <label for="amount">金额 (元):</label>
+        <input type="number" id="amount" name="amount">
+        <label for="weight">重量 (克):</label>
+        <input type="number" id="weight" name="weight">
+        <button type="button" onclick="convert()">换算</button>
+    </form>
+    <p id="conversionResult"></p>
+</div>
+
 <div id="DomesticGold" class="table-container" >
     <!-- 国内金价表格代码 -->
     <h2>国内金价</h2>
