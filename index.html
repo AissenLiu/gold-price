@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>实时金价|黄金价格|实时黄金价格|金价实时数据</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Home')" >实时金价</button>
+    <button class="tablinks" onclick="openTab(event, 'DomesticGold')">国内金价</button>
+    <button class="tablinks" onclick="openTab(event, 'Brands')">金店品牌</button>
+</div>
+
+<div id="Home" class="table-container">
+    <!-- 首页展示黄金延期价格 -->
+    <div id="home">
+        <span id="goldPriceInfo">加载中...</span>
+    </div>
+</div>
+
+<div id="DomesticGold" class="table-container" >
+    <!-- 国内金价表格代码 -->
+    <h2>国内金价</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>价格</th>
+            <th>涨跌幅</th>
+            <th>最高价</th>
+            <th>最低价</th>
+            <th>开盘价</th>
+            <th>昨收价</th>
+            <th>日期</th>
+        </tr>
+        </thead>
+        <tbody id="domesticGoldTable">
+        <!-- 国内金价数据填充在这里 -->
+        </tbody>
+    </table>
+</div>
+
+<div id="Brands" class="table-container" >
+    <!-- 金店品牌表格代码 -->
+    <h2>金店品牌及金价</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>品牌名称</th>
+            <th>黄金价格</th>
+            <th>铂金价格</th>
+            <th>更新日期</th>
+        </tr>
+        </thead>
+        <tbody id="brandsTable">
+        <!-- 金店品牌数据填充在这里 -->
+        </tbody>
+    </table>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
