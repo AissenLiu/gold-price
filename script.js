@@ -120,9 +120,8 @@ window.onload = function() {
                 let infoText;
                 let priceInfoClass;
                 if (changePercent > 0) {
-                    infoText = `今天黄金涨了↑${changeAmount.toFixed(2)}元，现在为${daygoldItem['price']}元/克`;
+                    infoText = `今天黄金涨了↑${Math.abs(changeAmount).toFixed(2)}元，现在为${daygoldItem['price']}元/克`;
                     priceInfoClass = 'increase';
-                    document.getElementById('goldPriceInfo').className = increase;
                 } else if (changePercent < 0) {
                     infoText = `今天黄金跌了↓${Math.abs(changeAmount).toFixed(2)}元，现在为${daygoldItem['price']}元/克`;
                     priceInfoClass = 'decrease';
