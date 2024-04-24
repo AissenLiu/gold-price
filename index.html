@@ -10,6 +10,9 @@
     <button class="tablinks" onclick="openTab(event, 'Home')" >实时金价</button>
     <button class="tablinks" onclick="openTab(event, 'DomesticGold')">国内金价</button>
     <button class="tablinks" onclick="openTab(event, 'Brands')">金店品牌</button>
+    <button class="tablinks" onclick="openTab(event, 'InternationalGold')">国际金价</button>
+    <button class="tablinks" onclick="openTab(event, 'HongKongGold')">香港金价</button>
+    <button class="tablinks" onclick="openTab(event, 'BankGold')">银行金价</button>
 </div>
 
 <div id="Home" class="table-container">
@@ -43,7 +46,7 @@
             <th>最低价</th>
             <th>开盘价</th>
             <th>昨收价</th>
-            <th>日期</th>
+            <th>更新日期</th>
         </tr>
         </thead>
         <tbody id="domesticGoldTable">
@@ -69,6 +72,67 @@
         </tbody>
     </table>
 </div>
+
+<div id="InternationalGold" class="table-container">
+    <h2>国际金价</h2>
+    <table id="internationalGoldTable">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>价格</th>
+            <th>涨跌幅</th>
+            <th>最高价</th>
+            <th>最低价</th>
+            <th>开盘价</th>
+            <th>昨收价</th>
+            <th>更新日期</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 表格内容将通过JavaScript动态生成 -->
+        </tbody>
+    </table>
+</div>
+
+<div id="HongKongGold" class="table-container">
+    <h2>香港金价</h2>
+    <table id="hongKongGoldTable">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>开盘价</th>
+            <th>昨收价</th>
+            <th>最高价</th>
+            <th>最低价</th>
+            <th>更新日期</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 表格内容将通过JavaScript动态生成 -->
+        </tbody>
+    </table>
+</div>
+
+<div id="BankGold" class="table-container">
+    <h2>银行金价</h2>
+    <table id="bankGoldTable">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>最新价</th>
+            <th>买入价</th>
+            <th>卖出价</th>
+            <th>最高价</th>
+            <th>最低价</th>
+            <th>更新日期</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 表格内容将通过JavaScript动态生成 -->
+        </tbody>
+    </table>
+</div>
+
 <div style="display: none">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-16H0344ZZP"></script>
