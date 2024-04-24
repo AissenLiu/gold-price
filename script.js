@@ -53,6 +53,74 @@ function updateDomesticGoldTable(jsonData) {
     }
 }
 
+// 更新国际金价表格的函数
+function updateInternationalGoldTable(jsonData) {
+    const tableBody = document.getElementById('internationalGoldTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // 清空现有的表格数据
+    if (jsonData['gj']) {
+        jsonData['gj'].forEach(item => {
+            const row = tableBody.insertRow();
+            row.insertCell().textContent = item['title'];
+
+            const priceCell = row.insertCell();
+            priceCell.textContent = item['price'];
+            if (item['changepercent'].includes('+')) {
+                priceCell.className = 'increase';
+            } else {
+                priceCell.className = 'decrease';
+            }
+
+            const changeCell = row.insertCell();
+            changeCell.textContent = item['changepercent'];
+            if (item['changepercent'].includes('+')) {
+                changeCell.className = 'increase';
+            } else {
+                changeCell.className = 'decrease';
+            }
+            row.insertCell().textContent = item['maxprice'];
+            row.insertCell().textContent = item['minprice'];
+            row.insertCell().textContent = item['openingprice'];
+            row.insertCell().textContent = item['lastclosingprice'];
+            row.insertCell().textContent = item['date'];
+        });
+    }
+}
+
+// 更新香港金价表格的函数
+function updateHongKongGoldTable(jsonData) {
+    const tableBody = document.getElementById('hongKongGoldTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // 清空现有的表格数据
+    if (jsonData['hk']) {
+        jsonData['hk'].forEach(item => {
+            const row = tableBody.insertRow();
+            row.insertCell().textContent = item['title'];
+            row.insertCell().textContent = item['openingprice'];
+            row.insertCell().textContent = item['lastclosingprice'];
+            row.insertCell().textContent = item['maxprice'];
+            row.insertCell().textContent = item['minprice'];
+            row.insertCell().textContent = item['date'];
+        });
+    }
+}
+
+// 更新银行金价表格的函数
+function updateBankGoldTable(jsonData) {
+    const tableBody = document.getElementById('bankGoldTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // 清空现有的表格数据
+    if (jsonData['yh']) {
+        jsonData['yh'].forEach(item => {
+            const row = tableBody.insertRow();
+            row.insertCell().textContent = item['title'];
+            row.insertCell().textContent = item['midprice'];
+            row.insertCell().textContent = item['buyprice'];
+            row.insertCell().textContent = item['sellprice'];
+            row.insertCell().textContent = item['maxprice'];
+            row.insertCell().textContent = item['minprice'];
+            row.insertCell().textContent = item['date'];
+        });
+    }
+}
+
 // 打开指定标签的函数
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -135,6 +203,30 @@ window.onload = function() {
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
+
+    // 获取国际金价数据
+    fetch(domesticGoldApiUrl)
+        .then(response => response.json())
+        .then(jsonData => {
+            updateInternationalGoldTable(jsonData);
+        })
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+
+    // 获取香港金价数据
+    fetch(domesticGoldApiUrl)
+        .then(response => response.json())
+        .then(jsonData => {
+            updateHongKongGoldTable(jsonData);
+        })
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+
+    // 获取银行金价数据
+    fetch(domesticGoldApiUrl)
+        .then(response => response.json())
+        .then(jsonData => {
+            updateBankGoldTable(jsonData);
+        })
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
 
     // 确保换算工具能够使用当前的金价
     if (domesticGoldData && domesticGoldData['gn']) {
