@@ -1,6 +1,6 @@
 // 接口地址
-const brandsApiUrl = 'http://api.jinjia.com.cn/index.php?m=app&a=brand&mi=0&cache=1';
-const domesticGoldApiUrl = 'http://api.jinjia.com.cn/index.php?m=app&mi=0&cache=1';
+const brandsApiUrl = 'https://api.goldprice.fun/brandsApiUrl';
+const domesticGoldApiUrl = 'https://api.goldprice.fun/domesticGoldApiUrl';
 
 // 用于存储数据的变量
 let brandsData = null;
