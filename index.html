@@ -9,12 +9,20 @@
 </head>
 <body>
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Home')" >实时金价</button>
-    <button class="tablinks" onclick="openTab(event, 'DomesticGold')">国内金价</button>
-    <button class="tablinks" onclick="openTab(event, 'Brands')">金店品牌</button>
-    <button class="tablinks" onclick="openTab(event, 'InternationalGold')">国际金价</button>
-    <button class="tablinks" onclick="openTab(event, 'HongKongGold')">香港金价</button>
-    <button class="tablinks" onclick="openTab(event, 'BankGold')">银行金价</button>
+    <button class="tablinks" onclick="openTab(event, 'Home')" >💸实时金价</button>
+    <button class="tablinks" onclick="openTab(event, 'DomesticGold')">💰️国内金价</button>
+    <button class="tablinks" onclick="openTab(event, 'Brands')">🧧金店品牌</button>
+    <button class="tablinks" onclick="openTab(event, 'InternationalGold')">💲国际金价</button>
+    <button class="tablinks" onclick="openTab(event, 'HongKongGold')">🇭🇰香港金价</button>
+    <button class="tablinks" onclick="openTab(event, 'BankGold')">🏦银行金价</button>
+    <button class="tablinks" onclick="showAppreciationModal()">🍜赞赏作者</button>
+</div>
+
+<div id="appreciationModal" class="modal">
+    <div id="appreciationContent" class="modal-content">
+        <span class="close" onclick="hideAppreciationModal()">&times;</span>
+        <img src="appreciate.jpg"/>
+    </div>
 </div>
 
 <div id="Home" class="table-container">

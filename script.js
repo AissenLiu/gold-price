@@ -288,3 +288,11 @@ function convert() {
         resultParagraph.textContent = '请输入金额或重量进行换算。';
     }
 }
+
+function showAppreciationModal() {
+    document.getElementById('appreciationModal').style.display = 'block';
+}
+
+function hideAppreciationModal() {
+    document.getElementById('appreciationModal').style.display = 'none';
+}
